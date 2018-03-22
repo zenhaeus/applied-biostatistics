@@ -1,17 +1,44 @@
-\documentclass{article}
-\usepackage[T1]{fontenc}
+\documentclass[a4paper]{article}
+\usepackage[utf8]{inputenc}
+
+\title{Applied Biostatistics - Project 1}
+
+\author{Lukas Widmer \\ Joey Zenhäusern}
 
 \begin{document}
 
-Here is a code chunk.
+\maketitle
 
-<<foo, fig.height=4>>=
-1+1
-letters
-chartr('xie', 'XIE', c('xie yihui', 'Yihui Xie'))
-par(mar=c(4, 4, .2, .2)); plot(rnorm(100))
+\section{Introduction}
+
+\section{Exploratory Analysis}
+
+<<foo, fig.height=4, echo=FALSE>>=
+
+library(stats)
+library(xtable)
+
+boxplot(
+    weight ~ group,
+    data = PlantGrowth
+)
+
+
 @
 
 You can also write inline expressions, e.g. $\pi=\Sexpr{pi}$, and \Sexpr{1.598673e8} is a big number.
+
+<<summary_table, fig.height=4, echo=FALSE, results='asis'>>=
+
+print(xtable(summary(PlantGrowth)))
+
+
+@
+
+\section{Data Modeling}
+
+\section{Analysis of Variance}
+
+\section{Conclusions}
 
 \end{document}
