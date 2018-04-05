@@ -3,9 +3,10 @@
 
 \title{Applied Biostatistics - Project 1}
 
-\author{Lukas Widmer \\ Joey Zenhäusern}
+\author{Lukas Widmer \\ Joey Zenh\"ausern}
 
 \begin{document}
+\SweaveOpts{concordance=TRUE}
 
 \maketitle
 
@@ -28,7 +29,7 @@ boxplot(
 
 You can also write inline expressions, e.g. $\pi=\Sexpr{pi}$, and \Sexpr{1.598673e8} is a big number.
 
-<<summary_table, fig.height=4, echo=FALSE, results='asis'>>=
+<<summary_table, fig.height=4, echo=FALSE, results=tex>>=
 
 print(xtable(summary(PlantGrowth)))
 
