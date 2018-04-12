@@ -6,40 +6,76 @@
 \author{Lukas Widmer \\ Joey Zenh\"ausern}
 
 \begin{document}
-\SweaveOpts{concordance=TRUE}
 
 \maketitle
 
 \section{Introduction}
 
+\newpage
 \section{Exploratory Analysis}
-
-<<foo, fig.height=4, echo=FALSE>>=
+The combined boxplot of the data suggests that there is a difference of the weight between the two treatments. However it is not possible to determine whether either or even both treatments are significantly different to the control group.\\
+One can see in the tables that there is a difference in mean and variance between all the three levels.
+<<foo, fig.height=4, warning=FALSE, echo=FALSE>>=
 
 library(stats)
 library(xtable)
+library(broom)
 
+
+
+plant.df = PlantGrowth
+plant.df$group = factor(plant.df$group, labels = c("Control", "Treatment 1", "Treatment 2"))
 boxplot(
-    weight ~ group,
-    data = PlantGrowth
+  weight ~ group,
+  data = plant.df,
+  xlab="Treatment Group",
+  ylab="Dried weight of plants"
 )
+stripchart(weight ~ group, data = PlantGrowth, 
+           vertical = TRUE, method = "jitter", 
+           pch = 21, col = "maroon", bg = "bisque", 
+           add = TRUE)
 
 
 @
 
-You can also write inline expressions, e.g. $\pi=\Sexpr{pi}$, and \Sexpr{1.598673e8} is a big number.
 
-<<summary_table, fig.height=4, echo=FALSE, results=tex>>=
+<<summary_table, fig.height=4, warning=FALSE, echo=FALSE, results="asis">>=
 
-print(xtable(summary(PlantGrowth)))
+print(xtable(summary(plant.df)))
 
 
 @
 
+<<mean_&_var_table, fig.height=4, warning=FALSE, echo=FALSE, results="asis">>=
+plant.mean <- with(plant.df, tapply(weight, group, mean))
+plant.var <- with(plant.df, tapply(weight, group, var))
+print(xtable(tidy(plant.mean)))
+print(xtable(tidy(plant.var)))
+
+@
+\newpage
 \section{Data Modeling}
-
+As first analyzing step we use the lm function to model the data. The model has evidence that there is a difference in the average growth when treated with the second one.
+<<lm_summary_table, fig.height=4, warning=FALSE, echo=FALSE, results="asis">>=
+plant.mod1 = lm(weight ~ group, data = plant.df)
+print(xtable(summary(plant.mod1)))
+@
+\newpage
 \section{Analysis of Variance}
+For further analysis we use anova on the fitted model. The result of the anova confirms that there is a difference between the groups.\\
+The confint function is used to calculate confidence intervals for the groups.\\
+The TukeyHSD shows that the difference is between the two treatments.
+<<anova_&_confint_table, fig.height=4, warning=FALSE, echo=FALSE, results="asis">>=
+print(xtable(anova(plant.mod1)))
+print(xtable(confint(plant.mod1)))
+#plot(aov(weight ~ group, data = plant.df))
+@
 
+<<tukeyhsd_table, fig.height=4, warning=FALSE, echo=FALSE, results="asis">>=
+print(xtable(tidy(TukeyHSD(aov(plant.mod1)))))
+@
+\newpage
 \section{Conclusions}
 
 \end{document}
