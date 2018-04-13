@@ -4,7 +4,8 @@
 \usepackage{amssymb}
 \usepackage{float}
 
-\title{Applied Biostatistics - Project 1}
+\title{Applied Biostatistics - Assignment 1\\
+\large{Problem 2: PlantGrowth Analysis}}
 
 \author{Lukas Widmer \\ Joey Zenh\"ausern}
 
@@ -13,14 +14,15 @@
 \maketitle
 
 \section{Introduction}
-In this report we will carry out a exploratory analysis on the \texttt{PlantGrowth} dataset, which is included in the 'datasets' package of the base \texttt{R}~\cite{R} installation. The dataset contains the results from an experiment in which plant yields (measured by dried weight) were compared under a control and two different treatment conditions. The data consists of 30 observations of two variables (,weight', ,group').
+In this report we will carry out a exploratory analysis on the \texttt{PlantGrowth} dataset, which is included in the 'datasets' package of the base \texttt{R}~\cite{R} installation. The dataset contains the results from an experiment, in which plant yields (measured by dried weight) were compared under a control and two different treatment conditions. The data consists of 30 observations of two variables (,weight', ,group').
 
-Furthermore, we will determine whether or not there are significant differences between the means of the groups by carrying out an analysis of variance. If there are differences, we will describe which groups are different from each other.
+Furthermore, we will determine whether or not there are significant differences between the means of the three groups by carrying out an analysis of variance. If there are differences, we will describe which groups are different from each other.
 
 \section{Exploratory Analysis}
-The combined boxplot shown in Figure~\ref{fig:boxplot} of the data suggests that there is a difference of the 
+The combined boxplot shown in Figure~\ref{fig:boxplot} of the data suggests that there is a difference  
 % TODO: are you sure this is the 'weight'?
-weight between the two treatments. However it is not possible to determine whether either or even both treatments are significantly different to the control group.\\
+% the boxplot compares the weight of each group, not sure how to write it better
+between the two treatments. However it is not possible to determine whether either or even both treatments are significantly different to the control group.\\
 One can see in Table~\ref{tab:means} and Table~\ref{tab:variances} that there are differences in mean and variance between the three groups.
 
 <<boxplot, fig.lp='fig:', fig.cap='Boxplot of the PlantGrowth dataset', fig.height=4, warning=FALSE, echo=FALSE>>=
@@ -39,7 +41,7 @@ boxplot(
   ylab="Dried weight of plants"
 )
 
-stripchart(weight ~ group, data = PlantGrowth, 
+stripchart(weight ~ group, data = plant.df, 
            vertical = TRUE, method = "jitter", 
            pch = 21, col = "maroon", bg = "bisque", 
            add = TRUE)
@@ -49,14 +51,16 @@ stripchart(weight ~ group, data = PlantGrowth,
 
 
 <<mean_&_var_table, warning=FALSE, echo=FALSE, results="asis">>=
-plant.mean <- with(plant.df, tapply(weight, group, mean))
-plant.var <- with(plant.df, tapply(weight, group, var))
+plant.mean <- tidy(with(plant.df, tapply(weight, group, mean)))
+plant.var <- tidy(with(plant.df, tapply(weight, group, var)))
+colnames(plant.mean) <- c("group", "mean")
+colnames(plant.var) <- c("group", "variance")
 print(
-      xtable(tidy(plant.mean), caption = "Mean by group", label = "tab:means"),
+      xtable(plant.mean, caption = "Mean by group", label = "tab:means"),
       table.placement = "H"
 )
 print(
-      xtable(tidy(plant.var), caption = "Variance by group", label = "tab:variances"),
+      xtable(plant.var, caption = "Variance by group", label = "tab:variances"),
       table.placement = "H"
 )
 @
@@ -66,18 +70,18 @@ Our hypotheses are the following:
     \mathcal{H}_0 &: \mu_{c} = \mu_{t_1} = \mu_{t_2}\\
     \mathcal{H}_a &: \text{at least one $\mu_i, i \in \{c, t_1, t_2\}$ is different}
 \end{align*}
-
+Our null Hypothesis is, that there is no significant difference between the mean of the three groups. Our alternative Hyothesis is that for each group the mean may differ, so that at least one differs significantly from the others.
 \newpage
 
 \section{Data Modeling}
-As a first step in our analysis we use the \texttt{lm} function to model the data. The model shows evidence that there is a difference in the average growth when treated with the second one.
+As a first step in our analysis we use the \texttt{lm} function to model the data. The model shows evidence that there is a difference in the average growth, when treatment 2 is in use.
 <<lm_summary_table, fig.height=4, warning=FALSE, echo=FALSE, results="asis">>=
 plant.mod1 = lm(weight ~ group, data = plant.df)
 print(xtable(summary(plant.mod1)))
 @
 \newpage
 \section{Analysis of Variance}
-For further analysis we use \texttt{anova} on the fitted model. The result of the \texttt{anova} confirms that there is a difference between the groups, and thus we can reject our null hypothesis $\mathcal{H}_0$ at the 0.05 level.\\
+For further analysis we use \texttt{anova} on the fitted model. The result of the \texttt{anova} confirms, that there is a difference between the groups, and thus we can reject our null hypothesis $\mathcal{H}_0$ at the 0.05 level.\\
 The \texttt{confint} function is used to calculate confidence intervals for the groups.\\
 The \texttt{TukeyHSD} shows that the difference is between the two treatments.
 <<anova_&_confint_table, fig.height=4, warning=FALSE, echo=FALSE, results="asis">>=
@@ -92,7 +96,9 @@ print(xtable(tidy(TukeyHSD(aov(plant.mod1))), caption = "Results of TukeyHSD", l
 @
 \newpage
 \section{Conclusions}
-
+The goal of this analysis is to find out if there is a significant difference between the means of the three groups in the dataset "PlantGrowth".\\
+The boxplot ~\ref{fig:boxplot} of the data already suggested a difference between the two treatment groups, which can also be seen in the two tables for mean~\ref{tab:means} and for variance~\ref{tab:variance}.\\
+The linear model solidifies our assumption. The anova and the TukeyHSD then show, that there is a siginicant difference between the two treatments.
 \bibliographystyle{plain}
 \bibliography{report}
 
