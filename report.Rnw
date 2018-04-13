@@ -14,7 +14,7 @@
 \maketitle
 
 \section{Introduction}
-In this report we will carry out a exploratory analysis on the \texttt{PlantGrowth} dataset, which is included in the 'datasets' package of the base \texttt{R}~\cite{R} installation. The dataset contains the results from an experiment, in which plant yields (measured by dried weight) were compared under a control and two different treatment conditions. The data consists of 30 observations of two variables (,weight', ,group').
+In this report we will carry out a exploratory analysis on the \texttt{PlantGrowth} dataset, which is included in the 'datasets' package of the base \texttt{R}~\cite{R} installation. The dataset contains the results from an experiment, in which plant yields (measured by dried weight) were compared under a control and two different treatment conditions. The data consists of 30 observations of two variables (\texttt{weight}, \texttt{group}).
 
 Furthermore, we will determine whether or not there are significant differences between the means of the three groups by carrying out an analysis of variance. If there are differences, we will describe which groups are different from each other.
 
@@ -97,8 +97,8 @@ print(xtable(tidy(TukeyHSD(aov(plant.mod1))), caption = "Results of TukeyHSD", l
 \newpage
 \section{Conclusions}
 The goal of this analysis is to find out if there is a significant difference between the means of the three groups in the dataset "PlantGrowth".\\
-The boxplot ~\ref{fig:boxplot} of the data already suggested a difference between the two treatment groups, which can also be seen in the two tables for mean~\ref{tab:means} and for variance~\ref{tab:variance}.\\
-The linear model solidifies our assumption. The anova and the TukeyHSD then show, that there is a siginicant difference between the two treatments.
+The boxplot~\ref{fig:boxplot} of the data already suggested a difference between the two treatment groups, which can also be seen in Table~\ref{tab:means} for means and in Table~\ref{tab:variances} for variance.\\
+The linear model solidifies our assumption. The \texttt{anova} and the \texttt{TukeyHSD} then show, that there is a siginicant difference between the two treatments.
 \bibliographystyle{plain}
 \bibliography{report}
 
