@@ -14,7 +14,7 @@
 \maketitle
 
 \section{Introduction}
-In this report we will carry out a exploratory analysis on the \texttt{PlantGrowth} dataset, which is included in the 'datasets' package of the base \texttt{R}~\cite{R} installation. The dataset contains the results from an experiment, in which plant yields (measured by dried weight) were compared under a control and two different treatment conditions. The data consists of 30 observations of two variables (\texttt{weight}, \texttt{group}).
+In this report we will carry out a exploratory analysis on the \texttt{PlantGrowth} dataset, which is included in the 'datasets' package of the base \texttt{R}~\cite{R} installation. The dataset contains the results from an experiment, in which plant yields (measured by dried weight) were compared under a control and two different treatment conditions. The data consists of 30 observations of two variables (\texttt{weight}, \texttt{group}), more precisely there are 10 weight observations per individual group.
 
 Furthermore, we will determine whether or not there are significant differences between the means of the three groups by carrying out an analysis of variance. If there are differences, we will describe which groups are different from each other.
 
@@ -71,7 +71,6 @@ Our hypotheses are the following:
     \mathcal{H}_a &: \text{at least one $\mu_i, i \in \{c, t_1, t_2\}$ is different}
 \end{align*}
 Our null Hypothesis is, that there is no significant difference between the mean of the three groups. Our alternative Hyothesis is that for each group the mean may differ, so that at least one differs significantly from the others.
-\newpage
 
 \section{Data Modeling}
 As a first step in our analysis we use the \texttt{lm} function to model the data. The model shows evidence that there is a difference in the average growth, when treatment 2 is in use.
@@ -79,7 +78,6 @@ As a first step in our analysis we use the \texttt{lm} function to model the dat
 plant.mod1 = lm(weight ~ group, data = plant.df)
 print(xtable(summary(plant.mod1)))
 @
-\newpage
 \section{Analysis of Variance}
 For further analysis we use \texttt{anova} on the fitted model. The result of the \texttt{anova} confirms, that there is a difference between the groups, and thus we can reject our null hypothesis $\mathcal{H}_0$ at the 0.05 level.\\
 The \texttt{confint} function is used to calculate confidence intervals for the groups.\\
@@ -94,7 +92,6 @@ print(xtable(confint(plant.mod1), caption = "Confidence intervals", label = "tab
 <<tukeyhsd_table, fig.height=4, warning=FALSE, echo=FALSE, results="asis">>=
 print(xtable(tidy(TukeyHSD(aov(plant.mod1))), caption = "Results of TukeyHSD", label = "tab:tukey"))
 @
-\newpage
 \section{Conclusions}
 The goal of this analysis is to find out if there is a significant difference between the means of the three groups in the dataset "PlantGrowth".\\
 The boxplot~\ref{fig:boxplot} of the data already suggested a difference between the two treatment groups, which can also be seen in Table~\ref{tab:means} for means and in Table~\ref{tab:variances} for variance.\\
