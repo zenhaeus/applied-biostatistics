@@ -15,12 +15,12 @@ In this report we will carry out a exploratory analysis on the \texttt{PlantGrow
 Furthermore, we will determine whether or not there are significant differences between the means of the groups by carrying out an analysis of variance. If there are differences, we will describe which groups are different from each other.
 
 \section{Exploratory Analysis}
-The combined boxplot of the data suggests that there is a difference of the 
+The combined boxplot shown in Figure~\ref{fig:boxplot} of the data suggests that there is a difference of the 
 % TODO: are you sure this is the 'weight'?
 weight between the two treatments. However it is not possible to determine whether either or even both treatments are significantly different to the control group.\\
-One can see in the tables that there is a difference in mean and variance between all the three levels.
+One can see in Table~\ref{tab:means} and Table~\ref{tab:variances} that there are differences in mean and variance between the three groups.
 
-<<boxplot, fig.height=4, warning=FALSE, echo=FALSE>>=
+<<boxplot, fig.lp='fig:', fig.cap='Boxplot of the PlantGrowth dataset', fig.height=4, warning=FALSE, echo=FALSE>>=
 
 library(stats)
 library(xtable)
@@ -46,22 +46,18 @@ stripchart(weight ~ group, data = PlantGrowth,
 
 
 <<summary_table, fig.height=4, warning=FALSE, echo=FALSE, results="asis">>=
-
 print(xtable(summary(plant.df)))
-
-
 @
 
-<<mean_&_var_table, fig.height=4, warning=FALSE, echo=FALSE, results="asis">>=
+<<mean_&_var_table, warning=FALSE, echo=FALSE, results="asis">>=
 plant.mean <- with(plant.df, tapply(weight, group, mean))
 plant.var <- with(plant.df, tapply(weight, group, var))
-print(xtable(tidy(plant.mean)))
-print(xtable(tidy(plant.var)))
-
+print(xtable(tidy(plant.mean), caption = "Mean by group", label = "tab:means"))
+print(xtable(tidy(plant.var), caption = "Variance by group", label = "tab:variances"))
 @
 \newpage
 \section{Data Modeling}
-As first analyzing step we use the \texttt{lm} function to model the data. The model has evidence that there is a difference in the average growth when treated with the second one.
+As a first step in our analysis we use the \texttt{lm} function to model the data. The model shows evidence that there is a difference in the average growth when treated with the second one.
 <<lm_summary_table, fig.height=4, warning=FALSE, echo=FALSE, results="asis">>=
 plant.mod1 = lm(weight ~ group, data = plant.df)
 print(xtable(summary(plant.mod1)))
