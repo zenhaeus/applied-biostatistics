@@ -39,17 +39,20 @@ library(stats)
 library(xtable)
 library(broom)
 
-plant.df = PlantGrowth
-plant.df$group = factor(plant.df$group, labels = c("Control", "Treatment 1", "Treatment 2"))
+plant.data = PlantGrowth
+plant.data$group = factor(
+    plant.data$group,
+    labels = c("Control", "Treat. 1", "Treat. 2")
+)
 
 boxplot(
   weight ~ group,
-  data = plant.df,
-  xlab="Treatment Group",
-  ylab="Dried weight of plants"
+  data = plant.data,
+  xlab="Group",
+  ylab="Dry weight of plants"
 )
 
-stripchart(weight ~ group, data = plant.df, 
+stripchart(weight ~ group, data = plant.data, 
            vertical = TRUE, method = "jitter", 
            pch = 21, col = "maroon", bg = "bisque", 
            add = TRUE)
@@ -59,8 +62,8 @@ stripchart(weight ~ group, data = plant.df,
 
 
 <<mean_&_var_table, warning=FALSE, echo=FALSE, results="asis">>=
-plant.mean <- tidy(with(plant.df, tapply(weight, group, mean)))
-plant.var <- tidy(with(plant.df, tapply(weight, group, var)))
+plant.mean <- tidy(with(plant.data, tapply(weight, group, mean)))
+plant.var <- tidy(with(plant.data, tapply(weight, group, var)))
 colnames(plant.mean) <- c("group", "mean")
 colnames(plant.var) <- c("group", "variance")
 print(
@@ -83,15 +86,15 @@ Our null Hypothesis is, that there is no significant difference between the mean
 \section{Data Modeling}
 As a first step in our analysis we use the \texttt{lm} function to model the data. The model shows evidence that there is a difference in the average growth, when treatment 2 is in use.
 <<lm_summary_table, fig.height=4, warning=FALSE, echo=FALSE, results="asis">>=
-plant.mod1 = lm(weight ~ group, data = plant.df)
-print(xtable(summary(plant.mod1)))
+plant.fit = lm(weight ~ group, data = plant.data)
+print(xtable(summary(plant.fit)))
 @
 \section{Analysis of Variance}
 For further analysis we use \texttt{anova} on the fitted model. The result of the \texttt{anova} confirms, that there is a difference between the groups, and thus we can reject our null hypothesis $\mathcal{H}_0$ at the 0.05 level.
 
 <<anova, fig.height=4, warning=FALSE, echo=FALSE, results="asis">>=
 print(
-    xtable(anova(plant.mod1), caption = "Results of ANOVA", label = "tab:anova"),
+    xtable(anova(plant.fit), caption = "Results of ANOVA", label = "tab:anova"),
     table.placement = "H"
 )
 @
@@ -101,14 +104,14 @@ Finally, a post-hoc analysis based on Tukey's range test using the \texttt{Tukey
 
 <<confint_table, fig.height=4, warning=FALSE, echo=FALSE, results="asis">>=
 print(
-    xtable(confint(plant.mod1), caption = "Confidence intervals", label = "tab:confint"),
+    xtable(confint(plant.fit), caption = "Confidence intervals", label = "tab:confint"),
     table.placement = "H"
 )
-#plot(aov(weight ~ group, data = plant.df))
+#plot(aov(weight ~ group, data = plant.data))
 @
 
 <<tukeyhsd_table, fig.height=4, warning=FALSE, echo=FALSE, results="asis">>=
-print(xtable(tidy(TukeyHSD(aov(plant.mod1))), caption = "Results of TukeyHSD", label = "tab:tukey"))
+print(xtable(tidy(TukeyHSD(aov(plant.fit))), caption = "Results of TukeyHSD", label = "tab:tukey"))
 @
 \section{Conclusions}
 The goal of this analysis is to find out if there is a significant difference between the means of the three groups in the dataset "PlantGrowth".
