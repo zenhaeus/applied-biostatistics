@@ -85,9 +85,15 @@ We use the \texttt{confint} function to calculate confidence intervals for the g
 Finally, a post-hoc analysis based on Tukey's range test using the \texttt{TukeyHSD} function, indicates that there is a significant difference between the means of the two treatments.
 
 <<anova_&_confint_table, fig.height=4, warning=FALSE, echo=FALSE, results="asis">>=
-print(xtable(anova(plant.mod1), caption = "Results of ANOVA", label = "tab:anova"))
+print(
+    xtable(anova(plant.mod1), caption = "Results of ANOVA", label = "tab:anova"),
+    table.placement = "H"
+)
 
-print(xtable(confint(plant.mod1), caption = "Confidence intervals", label = "tab:confint"))
+print(
+    xtable(confint(plant.mod1), caption = "Confidence intervals", label = "tab:confint"),
+    table.placement = "H"
+)
 #plot(aov(weight ~ group, data = plant.df))
 @
 
