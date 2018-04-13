@@ -14,7 +14,7 @@
 \maketitle
 
 \section{Introduction}
-In this report we will carry out a exploratory analysis on the \texttt{PlantGrowth} dataset, which is included in the 'datasets' package of the base \texttt{R}~\cite{R} installation. The dataset contains the results from an experiment, in which plant yields (measured by dried weight) were compared under a control and two different treatment conditions. The data consists of 30 observations of two variables (\texttt{weight}, \texttt{group}), more precisely there are 10 weight observations per individual group.
+In this report we will carry out a exploratory analysis on the \texttt{PlantGrowth} dataset, which is included in the \texttt{datasets} package of the base \texttt{R}~\cite{R} installation. The dataset contains the results from an experiment, in which plant yields (measured by dried weight) were compared under a control and two different treatment conditions. The data consists of 30 observations of two variables (\texttt{weight}, \texttt{group}), more precisely there are 10 weight observations per individual group.
 
 Furthermore, we will determine whether or not there are significant differences between the means of the three groups by carrying out an analysis of variance. If there are differences, we will describe which groups are different from each other.
 
