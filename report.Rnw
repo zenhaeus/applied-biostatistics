@@ -10,27 +10,30 @@
 \maketitle
 
 \section{Introduction}
+In this report we will carry out a exploratory analysis on the PlantGrowth dataset, which is included in the 'datasets' package of the base R~\cite{R} installation. The dataset contains the results from an experiment in which plant yields (measured by dried weight) were compared under a control and two different treatment conditions.
 
-\newpage
+Furthermore, we will determine whether or not there are significant differences between the means of the groups by carrying out an analysis of variance. If there are differences, we will describe which groups are different from each other.
+
 \section{Exploratory Analysis}
 The combined boxplot of the data suggests that there is a difference of the weight between the two treatments. However it is not possible to determine whether either or even both treatments are significantly different to the control group.\\
 One can see in the tables that there is a difference in mean and variance between all the three levels.
-<<foo, fig.height=4, warning=FALSE, echo=FALSE>>=
+
+<<boxplot, fig.height=4, warning=FALSE, echo=FALSE>>=
 
 library(stats)
 library(xtable)
 library(broom)
 
-
-
 plant.df = PlantGrowth
 plant.df$group = factor(plant.df$group, labels = c("Control", "Treatment 1", "Treatment 2"))
+
 boxplot(
   weight ~ group,
   data = plant.df,
   xlab="Treatment Group",
   ylab="Dried weight of plants"
 )
+
 stripchart(weight ~ group, data = PlantGrowth, 
            vertical = TRUE, method = "jitter", 
            pch = 21, col = "maroon", bg = "bisque", 
@@ -77,5 +80,8 @@ print(xtable(tidy(TukeyHSD(aov(plant.mod1)))))
 @
 \newpage
 \section{Conclusions}
+
+\bibliographystyle{plain}
+\bibliography{report}
 
 \end{document}
