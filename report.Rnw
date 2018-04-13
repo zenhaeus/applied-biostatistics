@@ -15,7 +15,9 @@ In this report we will carry out a exploratory analysis on the PlantGrowth datas
 Furthermore, we will determine whether or not there are significant differences between the means of the groups by carrying out an analysis of variance. If there are differences, we will describe which groups are different from each other.
 
 \section{Exploratory Analysis}
-The combined boxplot of the data suggests that there is a difference of the weight between the two treatments. However it is not possible to determine whether either or even both treatments are significantly different to the control group.\\
+The combined boxplot of the data suggests that there is a difference of the 
+% TODO: are you sure this is the 'weight'?
+weight between the two treatments. However it is not possible to determine whether either or even both treatments are significantly different to the control group.\\
 One can see in the tables that there is a difference in mean and variance between all the three levels.
 
 <<boxplot, fig.height=4, warning=FALSE, echo=FALSE>>=
