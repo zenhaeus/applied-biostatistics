@@ -26,10 +26,11 @@ In addition to the base installation of \texttt{R} we have used the following pa
 \end{itemize}
 
 \section{Exploratory Analysis}
-The combined boxplot shown in Figure~\ref{fig:boxplot} of the data suggests that there is a difference  
+The combined boxplot shown in Figure~\ref{fig:boxplot} of the data suggests that there is a difference
 % TODO: are you sure this is the 'weight'?
 % the boxplot compares the weight of each group, not sure how to write it better
-between the two treatments. However it is not possible to determine whether either or even both treatments are significantly different to the control group.\\
+between the two treatments. However it is not possible to determine whether either or even both treatments are significantly different to the control group.
+
 One can see in Table~\ref{tab:means} and Table~\ref{tab:variances} that there are differences in mean and variance between the three groups.
 
 <<boxplot, fig.lp='fig:', fig.cap='Boxplot of the PlantGrowth dataset', fig.height=4, warning=FALSE, echo=FALSE>>=
@@ -110,8 +111,8 @@ print(
 print(xtable(tidy(TukeyHSD(aov(plant.mod1))), caption = "Results of TukeyHSD", label = "tab:tukey"))
 @
 \section{Conclusions}
-The goal of this analysis is to find out if there is a significant difference between the means of the three groups in the dataset "PlantGrowth".\\
-The boxplot~\ref{fig:boxplot} of the data already suggested a difference between the two treatment groups, which can also be seen in Table~\ref{tab:means} for means and in Table~\ref{tab:variances} for variance.\\
+The goal of this analysis is to find out if there is a significant difference between the means of the three groups in the dataset "PlantGrowth".
+The boxplot in of the data Figure~\ref{fig:boxplot} already suggested a difference between the two treatment groups, which can also be seen in Table~\ref{tab:means} for means and in Table~\ref{tab:variances} for variance.
 The linear model solidifies our assumption. The \texttt{anova} and the \texttt{TukeyHSD} then show, that there is a siginicant difference between the two treatments.
 \bibliographystyle{unsrt}
 \bibliography{report}
