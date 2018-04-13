@@ -81,12 +81,12 @@ Our hypotheses are the following:
 Our null Hypothesis is, that there is no significant difference between the mean of the three groups. Our alternative Hypothesis is that for each group the mean may differ, so that at least one differs significantly from the others.
 
 \section{Data Modeling}
-As a first step in our analysis we use the \texttt{lm} function to model the data. The model parameters estimated by the model correspond to the mean of the \texttt{Control} (\texttt{intercept}), the difference in mean between \texttt{Control} and \texttt{Treat.~1} (\texttt{groupTreat.~1}), as well as the difference in mean between \texttt{Control} and \texttt{Treat.~2} (\texttt{groupTreat.~2}). From this it is easy to see that in absolute terms the difference in mean is largest between \texttt{Control} and \texttt{Treat.~2}, though the model coefficient appears to be significant only at the 0.10 level. 
+As a first step in our analysis we use the \texttt{lm} function to model the data. The model parameters estimated by the model (see Table~\ref{tab:plantlm}) correspond to the mean of the \texttt{Control} (\texttt{intercept}), the difference in mean between \texttt{Control} and \texttt{Treat.~1} (\texttt{groupTreat.~1}), as well as the difference in mean between \texttt{Control} and \texttt{Treat.~2} (\texttt{groupTreat.~2}). From this it is easy to see that in absolute terms the difference in mean is largest between \texttt{Control} and \texttt{Treat.~2}, though the model coefficient appears to be significant only at the 0.10 level. 
 
 It should be noted, that the confidence intervals for the model coefficients \texttt{groupTreat.~1} and \texttt{groupTreat.~2} both contain zero, so we cannot reject the null hypothesis based on the linear model.
 <<lm_summary_table, fig.height=4, warning=FALSE, echo=FALSE, results="asis">>=
 plant.fit = lm(weight ~ group, data = plant.data)
-print(xtable(summary(plant.fit)))
+print(xtable(summary(plant.fit), caption = "Summary of linear model fitted to PlantGrowth data", label="tab:plantlm"))
 @
 \section{Analysis of Variance}
 For further analysis we use \texttt{anova} on the fitted model. The result of the \texttt{anova} confirms, that there is a difference between the groups, and thus we can reject our null hypothesis $\mathcal{H}_0$ at the 0.05 level.
