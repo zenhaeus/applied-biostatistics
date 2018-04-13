@@ -18,6 +18,13 @@ In this report we will carry out a exploratory analysis on the \texttt{PlantGrow
 
 Furthermore, we will determine whether or not there are significant differences between the means of the three groups by carrying out an analysis of variance. If there are differences, we will describe which groups are different from each other.
 
+In addition to the base installation of \texttt{R} we have used the following packages to generate this report: 
+\begin{itemize}
+    \item \texttt{knitr}~\cite{knitr}: To embed \texttt{R} code within a LaTeX document.
+    \item \texttt{xtable}~\cite{xtable}: To generate LaTeX tables within \texttt{R}.
+    \item \texttt{broom}~\cite{broom}: For easy handling and conversion of lists to tables.
+\end{itemize}
+
 \section{Exploratory Analysis}
 The combined boxplot shown in Figure~\ref{fig:boxplot} of the data suggests that there is a difference  
 % TODO: are you sure this is the 'weight'?
@@ -104,7 +111,7 @@ print(xtable(tidy(TukeyHSD(aov(plant.mod1))), caption = "Results of TukeyHSD", l
 The goal of this analysis is to find out if there is a significant difference between the means of the three groups in the dataset "PlantGrowth".\\
 The boxplot~\ref{fig:boxplot} of the data already suggested a difference between the two treatment groups, which can also be seen in Table~\ref{tab:means} for means and in Table~\ref{tab:variances} for variance.\\
 The linear model solidifies our assumption. The \texttt{anova} and the \texttt{TukeyHSD} then show, that there is a siginicant difference between the two treatments.
-\bibliographystyle{plain}
+\bibliographystyle{unsrt}
 \bibliography{report}
 
 \end{document}
