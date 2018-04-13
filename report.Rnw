@@ -48,10 +48,6 @@ stripchart(weight ~ group, data = PlantGrowth,
 @
 
 
-<<summary_table, fig.height=4, warning=FALSE, echo=FALSE, results="asis">>=
-print(xtable(summary(plant.df)))
-@
-
 <<mean_&_var_table, warning=FALSE, echo=FALSE, results="asis">>=
 plant.mean <- with(plant.df, tapply(weight, group, mean))
 plant.var <- with(plant.df, tapply(weight, group, var))
