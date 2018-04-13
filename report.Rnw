@@ -26,7 +26,7 @@ In addition to the base installation of \texttt{R} we have used the following pa
 \end{itemize}
 
 \section{Exploratory Analysis}
-In the boxplot, which is combined with a dotplot, shown in Figure~\ref{fig:boxplot}, one can see that there might be a difference between the two treatments. However as the data from treamtment 1 is scattered, it is difficult to conclude anything, especially as there are not so many datapoints. Furtehrmore it is not possible to determine whether either or even both treatments are significantly different to the control group.
+In the boxplot, which is combined with a scatterplot, shown in Figure~\ref{fig:boxplot}, one can see that there might be a difference between the two treatments. However as the data from \texttt{Treat. 1} is scattered, it is difficult to conclude anything, especially as there are only few observations Furthermore it is not possible to determine whether either or even both treatments are significantly different to the control group.
 
 One can see in Table~\ref{tab:means} and Table~\ref{tab:variances} that there are differences in mean and variance between the three groups.
 
@@ -78,10 +78,12 @@ Our hypotheses are the following:
     \mathcal{H}_0 &: \mu_{c} = \mu_{t_1} = \mu_{t_2}\\
     \mathcal{H}_a &: \text{at least one $\mu_i, i \in \{c, t_1, t_2\}$ is different}
 \end{align*}
-Our null Hypothesis is, that there is no significant difference between the mean of the three groups. Our alternative Hyothesis is that for each group the mean may differ, so that at least one differs significantly from the others.
+Our null Hypothesis is, that there is no significant difference between the mean of the three groups. Our alternative Hypothesis is that for each group the mean may differ, so that at least one differs significantly from the others.
 
 \section{Data Modeling}
-As a first step in our analysis we use the \texttt{lm} function to model the data. The model shows some evidence that there is a difference in the average growth, when treatment 2 is in use.
+As a first step in our analysis we use the \texttt{lm} function to model the data. The model parameters estimated by the model correspond to the mean of the \texttt{Control} (\texttt{intercept}), the difference in mean between \texttt{Control} and \texttt{Treat.~1} (\texttt{groupTreat.~1}), as well as the difference in mean between \texttt{Control} and \texttt{Treat.~2} (\texttt{groupTreat.~2}). From this it is easy to see that in absolute terms the difference in mean is largest between \texttt{Control} and \texttt{Treat.~2}, though the model coefficient appears to be significant only at the 0.10 level. 
+
+It should be noted, that the confidence intervals for the model coefficients \texttt{groupTreat.~1} and \texttt{groupTreat.~2} both contain zero, so we cannot reject the null hypothesis based on the linear model.
 <<lm_summary_table, fig.height=4, warning=FALSE, echo=FALSE, results="asis">>=
 plant.fit = lm(weight ~ group, data = plant.data)
 print(xtable(summary(plant.fit)))
@@ -96,7 +98,7 @@ print(
 )
 @
 
-We use the \texttt{confint} function to calculate confidence intervals for the groups, the result is listed in Table~\ref{tab:confint}. However as the confidence intervals are overlapping, one can not conclude a siginficant difference from it.
+We use the \texttt{confint} function to calculate confidence intervals for the groups, the result is listed in Table~\ref{tab:confint}. However as the confidence intervals are overlapping, one can not conclude a significant difference from it.
 Finally, a post-hoc analysis based on Tukey's range test using the \texttt{TukeyHSD} function, indicates that there is a significant difference between the means of the two treatments on the 95\% level.
 
 <<confint_table, fig.height=4, warning=FALSE, echo=FALSE, results="asis">>=
@@ -111,9 +113,9 @@ print(
 print(xtable(tidy(TukeyHSD(aov(plant.fit))), caption = "Results of TukeyHSD", label = "tab:tukey"))
 @
 \section{Conclusions}
-The goal of this analysis is to find out if there is a significant difference between the means of the three groups in the dataset "PlantGrowth".
-The boxplot in of the data Figure~\ref{fig:boxplot} shows that there is some difference between the two treatment groups, which can also be seen in Table~\ref{tab:means} for means and in Table~\ref{tab:variances} for variance. However there are not so many data points and the data points from treatment 1 are quite scattered, which both leads to some uncertanty. %Bin mit dem satz, also dem letzten, noch nicht zufrieden
-The linear model gives some further support for this assumption. The \texttt{anova} with a 5\%-confidence-level and the \texttt{TukeyHSD} with a 95\%-confidence-level then show, that there is a siginicant difference between the two treatments.
+The goal of this analysis is to find out whether there is a significant difference between the means of the three groups in the dataset "PlantGrowth".
+The boxplot in Figure~\ref{fig:boxplot} shows that there is some difference between the two treatment groups, which can also be seen in Table~\ref{tab:means} for means and in Table~\ref{tab:variances} for variance. However there are only few data points and the data points from treatment 1 are quite scattered, both of which leads to a fair degree of uncertainty. %Bin mit dem satz, also dem letzten, noch nicht zufrieden
+Fitting a linear model to the data does not reveal any new information that would lead to the rejection of the null hypothesis. The \texttt{anova} with a significance level of 0.05 and the \texttt{TukeyHSD} with a 95\%-confidence-level then show, that there is a significant difference between the two treatments.
 \bibliographystyle{unsrt}
 \bibliography{report}
 
