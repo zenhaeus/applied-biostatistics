@@ -1,6 +1,7 @@
-report.pdf
-figure/
-report.tex
+*/report.pdf
+*/figure/
+*/report.tex
+*/*.pdf
 
 # History files
 .Rhistory
