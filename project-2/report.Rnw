@@ -1,0 +1,21 @@
+\documentclass[a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{float}
+
+\title{Applied Biostatistics - Assignment 2\\
+\large{Subtitle}}
+
+\author{Lukas Widmer \\ Joey Zenh\"ausern}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+\section{Conclusions}
+\bibliographystyle{unsrt}
+\bibliography{report}
+
+\end{document}
