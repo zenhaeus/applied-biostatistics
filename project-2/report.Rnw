@@ -7,9 +7,9 @@
 \usepackage{hyperref}
 
 \title{Applied Biostatistics - Assignment 2\\
-\large{Subtitle}}
+\large{Study Evaluation}}
 
-\author{Lukas Widmer \\ Joey Zenh\"ausern}
+\author{Lukas Widmer \\ Joey Zenhäusern}
 
 \begin{document}
 
@@ -44,9 +44,10 @@
 % [ ]  20. In light of your answers to the above, does the evidence support the conclusions? 
 
 \section{Introduction}
-This assignment is an evaluation of \citet{TANG2018129}, an observational study whose objevtive was to ``explore the risk factors that were associated with central lymph node metastases (CLNM) in papillary thyroid carcinoma (PTC) patients".
+This assignment is an evaluation of \citet{TANG2018129}, an observational study whose objective was to ``explore the risk factors that were associated with central lymph node metastases (CLNM) in papillary thyroid carcinoma (PTC) patients".
 
 \section{Data Collection}
+The study was done on 202 retrospectively selected patients who had undergone thyroid surgery at the authors' hospital, of which only 180 were considered in the final analysis.
 
 \section{Methods}
 
