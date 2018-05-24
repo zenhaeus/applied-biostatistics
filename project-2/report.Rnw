@@ -46,6 +46,8 @@
 \section{Introduction}
 This assignment is an evaluation of \citet{TANG2018129}, an observational study whose objective was to ``explore the risk factors that were associated with central lymph node metastases (CLNM) in papillary thyroid carcinoma (PTC) patients". In this report we will address the biomedical background of the paper, describe the data which the study is based on, comment on the types of analyses that were carried out, as well as recommend further analyses that could have been done. Finally, we will discuss the conclusions that were drawn by the authors of the study.
 
+This report was created using the following software: \texttt{R}~\citep{R}, \texttt{knitr}~\citep{knitr}.
+
 \section{Data Collection}
 The study was done on 202 retrospectively selected patients who had undergone thyroid surgery at the authors' hospital, out of which only 180 were considered in the final analysis. Multiple pathological features were available for each patient and the study finally included the following:
 
