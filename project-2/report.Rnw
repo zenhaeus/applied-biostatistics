@@ -61,8 +61,8 @@ In addition to these features the age and gender of the patients were also taken
 
 \section{Methods}
 Since the study was observational and not a controlled experiment, there is no `treatment', no control group and it is neither double blind nor randomized.\par
-There is not a experimental unit, as there is no experiment. One can also not say, what the experimental unit would be, if there is an experiment, as it depends on the setup of the experiment. As the study is observational, there is no real experimental design. The data collection was done at the authors' hospital itself, like described in section~\ref{datacollection}. As it is a observational study the effect of confounding variables was not tackeld. However one can make inferences about the relationship between independent variables and dependent variables.\par
-Cofounding variables were not explicitly stated by the authors, ... %age could be one, but unsure
+There is not a experimental unit, as there is no experiment. One can also not say, what the experimental unit would be, if there is an experiment, as it depends on the setup of the experiment. As the study is observational, there is no real experimental design. The data collection was done at the authors' hospital itself, like described in section~\ref{datacollection}. As it is a observational study the effect of confounding variables was not tackled. However one can make inferences about the relationship between independent variables and dependent variables.\par
+Confounding variables were not explicitly stated by the authors, ... %age could be one, but unsure
 As the study was observational 
 
 
