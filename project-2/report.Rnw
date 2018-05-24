@@ -44,12 +44,25 @@
 % [ ]  20. In light of your answers to the above, does the evidence support the conclusions? 
 
 \section{Introduction}
-This assignment is an evaluation of \citet{TANG2018129}, an observational study whose objective was to ``explore the risk factors that were associated with central lymph node metastases (CLNM) in papillary thyroid carcinoma (PTC) patients".
+This assignment is an evaluation of \citet{TANG2018129}, an observational study whose objective was to ``explore the risk factors that were associated with central lymph node metastases (CLNM) in papillary thyroid carcinoma (PTC) patients". In this report we will address the biomedical background of the paper, describe the data which the study is based on, comment on the types of analyses that were carried out, as well as recommend further analyses that could have been done. Finally, we will discuss the conclusions that were drawn by the authors of the study.
 
 \section{Data Collection}
-The study was done on 202 retrospectively selected patients who had undergone thyroid surgery at the authors' hospital, of which only 180 were considered in the final analysis.
+The study was done on 202 retrospectively selected patients who had undergone thyroid surgery at the authors' hospital, out of which only 180 were considered in the final analysis. Multiple pathological features were available for each patient and the study finally included the following:
+
+\begin{itemize}
+    \item Tumor size
+    \item Multifocality
+    \item Hashimoto's thyroiditis (HT)
+    \item Lymphovascular invasion (LVI)
+    \item Extrathyroidal extension (ETE)
+\end{itemize}
+
+In addition to these features the age and gender of the patients were also taken into account.
 
 \section{Methods}
+Since the study was observational and not a controlled experiment, there is no `treatment', no control group and it is neither double blind nor randomized.
+
+% describe univariate and binary logistic regression
 
 \section{Possible Extension of Methodology}
 
