@@ -15,36 +15,16 @@
 
 \maketitle
 
-% QUESTIONS TO ANSWER
-% TODO: tick of questions that are answered
-%
+\section{Introduction}
 % [x]  1. What question(s) does the study address?
 % [x]  2. Is this study an experiment or an observational study (who decides who gets the treatment)?
-% [x]  3. What is the "treatment"? (Is there a treatment?) How many treatments are there?
-% [x]  4. Is there a control group? Is a placebo used for the control group?
-% [x]  5. (If controlled experiment) Is the experiment run blind? Double-blind?
-% [x]  6. (If controlled experiment) Is the experiment randomized? (Is the assignment to the treatment group or control group governed by a chance procedure, rather than by judgement or a haphazard procedure?)
-% [?]  7. What are the experimental units?
-% [?]  8. What is the experimental design?
-% [?]  9. What confounding factors may be involved?
-% [?]  10. Are any confounding factors controlled for?
-% [ ]  11. What type of data are collected?
-% [?]  12. Are data values measured or self-reported?
-% [?]  13. What potential sources of bias are there?
-% [?]  14. Is the study exploratory or confirmatory?
-% [?]  15. Are the statistical hypotheses articulated before the study is carried out, or are they suggested by the study?
-% [?]  16. How are the data analyzed? Is the analysis appropriate for the design?
-% [?]  17. Is the study exploratory or confirmatory?
-% [?]  18. Is there adequate power? Is the sample size appropriate for the stated aims?
-% [?]  19. Does the study adequately address the question(s) it attempts to answer? (Can the question(s) possibly be answered by this study?)
-% [?]  20. In light of your answers to the above, does the evidence support the conclusions?  
+This assignment is an evaluation of \citet{TANG2018129}, an observational study whose objective was to ``explore the risk factors that were associated with central lymph node metastases (CLNM) in papillary thyroid carcinoma (PTC) patients". Papillary thyroid carcinoma is the most prevalent type of cancer to affect the thyroid. In this report we will address the biomedical background of the paper, describe the data which the study is based on, comment on the types of analyses that were carried out, as well as recommend further analyses that could have been done. Finally, we will discuss the conclusions that were drawn by the authors of the study.
 
-\section{Introduction}
-This assignment is an evaluation of \citet{TANG2018129}, an observational study whose objective was to ``explore the risk factors that were associated with central lymph node metastases (CLNM) in papillary thyroid carcinoma (PTC) patients". In this report we will address the biomedical background of the paper, describe the data which the study is based on, comment on the types of analyses that were carried out, as well as recommend further analyses that could have been done. Finally, we will discuss the conclusions that were drawn by the authors of the study.
-
-This report was created using the following software: \texttt{R}~\citep{R}, \texttt{knitr}~\citep{knitr}.
+% FIXME: probably not needed
+%This report was created using the following software: \texttt{R}~\citep{R}, \texttt{knitr}~\citep{knitr}.
 
 \section{Data Collection}\label{datacollection}
+% [ ]  11. What type of data are collected?
 The study was done on 202 retrospectively selected patients who had undergone thyroid surgery at the authors' hospital, out of which only 180 were considered in the final analysis. Multiple pathological features were available for each patient and the study finally included the following:
 
 \begin{itemize}
@@ -55,31 +35,54 @@ The study was done on 202 retrospectively selected patients who had undergone th
     \item Extrathyroidal extension (ETE)
 \end{itemize}
 
-In addition to these features the age and gender of the patients were also taken into account.
+In addition to these features, the age and gender of the patients were also taken into account.
 
 % TODO type of data
 
-\section{Methods}
-Since the study was observational and not a controlled experiment, there is no `treatment', no control group and it is neither double blind nor randomized.\par
-There is not a experimental unit, as there is no experiment. One can also not say, what the experimental unit would be, if there is an experiment, as it depends on the setup of the experiment. As the study is observational, there is no real experimental design. The data collection was done at the authors' hospital itself, like described in section~\ref{datacollection}. As it is a observational study the effect of confounding variables was not tackled. However one can make inferences about the relationship between independent variables and dependent variables.\par
-Confounding variables were not explicitly stated by the authors, ... 
-% TODO age could be one, but unsure
-As the study was observational there was no intended control of any variable or factor, so the possible confounding factors were not controlled either.\par
-There can be a selection bias as the whole data is from a single center.\par
-The clinical data was measured by the hospital as some other data (age, ...) were reported by the patiences.\par
-The study itself is exploratory as in the study actually wanted to check if there might be a connection but did not already start with a quite clear theory, which should now be proved. For that reason a hypothesis is stated in the end however not already in the beginning. The objective was to explore risk factors associated with CLMN in PTC patients.\par
-The data were analyzed by SPSS 16.0 statistical software. Data are expressed as the mean ± standard deviation (SD). Difference between categorical was analyzed by Chi-squared $(\chi^2)$ test. Univariate logistic and binary logistic regression were performed to investigate the relationship between clinicopathologic features and CLNM. A p value < 0.05 was considered statistically significant.\par
+\section{Methodology}
+% [x]  3. What is the "treatment"? (Is there a treatment?) How many treatments are there?
+% [x]  4. Is there a control group? Is a placebo used for the control group?
+% [x]  5. (If controlled experiment) Is the experiment run blind? Double-blind?
+% [x]  6. (If controlled experiment) Is the experiment randomized? (Is the assignment to the treatment group or control group governed by a chance procedure, rather than by judgement or a haphazard procedure?)
+Since the study was observational and not a controlled experiment, there is no treatment, no control group and it is neither double blind nor randomized.
+
+% [?]  7. What are the experimental units?
+% [?]  8. What is the experimental design?
+There is no experimental unit, as there is no experiment. One can also not say, what the experimental unit would be, if there is an experiment, as it depends on the setup of the experiment. As the study is observational, there is no real experimental design. The data collection was done at the authors' hospital itself, as described in section~\ref{datacollection}.
+
+The variables available are not a priori dependent or independent, as they are mere recordings of patient data. However, the study tries to establish whether there are independent predictor variables if CLNM is seen as the dependent variable, by using univariate and multivariate logistic regression.
+
+% [?]  9. What confounding factors may be involved?
+% [?]  10. Are any confounding factors controlled for?
+The authors make no mention of possible confounding factors and how to control them, but as pointed out by \citet{Norgaard2017}, ruling  out confounding is a constant challenge in studies of observational design, due to their non randomized nature.
+
+% [?]  13. What potential sources of bias are there?
+There are a number of potential sources of bias that can affect observational studies such as this one. First of all a selection bias could be present, as the whole data is from a single center. There could also be information bias in the form of measurement errors or misclassifications, which is hard to judge for us because we have no way of verifying the correctness of the data.
+
+% [?]  12. Are data values measured or self-reported?
+The clinical data was measured by the hospital as some other data (age, ...) were reported by the patiences.
+
+% [?]  14. Is the study exploratory or confirmatory?
+% [?]  15. Are the statistical hypotheses articulated before the study is carried out, or are they suggested by the study?
+The study itself is exploratory, as in the study actually wanted to check if there might be a connection, but did not already start with a clear theory, which should now be proved. For that reason, a hypothesis is stated in the end, however not already in the beginning. The objective was to explore risk factors associated with CLMN in PTC patients.
+
+% [?]  16. How are the data analyzed? Is the analysis appropriate for the design?
+% TODO: rephrase paragraph in own words or cite properly
+The data were analyzed by SPSS 16.0 statistical software. Data are expressed as the mean $\pm$ standard deviation (SD). Difference between categorical was analyzed by Chi-squared $(\chi^2)$ test. Univariate logistic and binary logistic regression were performed to investigate the relationship between clinicopathologic features and CLNM. A p value $< 0.05$ was considered statistically significant.
+
 % describe univariate and binary logistic regression
-When the response variable is binary, so with values coded as 0 or 1, and the logit-function is used for regression it is called binary logistic regression. Univariante means, that the model only has one variable.
+When the response variable is binary, so with values coded as 0 or 1, and the logit-function is used for regression it is called binary logistic regression. Univariate means, that the model only has one variable.
 % TODO is it the appropriate way to analyze?
-\par
-The study itself has for the observational study not that many data samples, however as it is only onservational not experimental, they could not influence the number of samples.
-% TODO adequate power?
-\par
-The question of the study was, if there are risk factors associated with CLNM. The results of the study showed, that multifocality, HT and LVI were significant associated with CLNM. So it was possible to identify several risk factors. So in conclusion there is evidence, that there are risk factors, which are supported. However as the study was first of all only observational, secondly done with a small data set and last but not least the data only conducted in one center, one can not make a final statement.
+
+% [?]  18. Is there adequate power? Is the sample size appropriate for the stated aims?
+The authors themselves have implied that their study might lack statistical power by stating that their sample size was not large enough, suggesting that a large sample studies would be needed to confirm their predictive results. If we were to estimate the power of the analyses, we would need to know the sample size $n$ (given), the significance level (e.g. $p < 0.05$), the effect size $d$, and the SD $\sigma$.
+
 \section{Possible Extension of Methodology}
 
 \section{Discussion of Conclusions}
+% [?]  19. Does the study adequately address the question(s) it attempts to answer? (Can the question(s) possibly be answered by this study?)
+% [?]  20. In light of your answers to the above, does the evidence support the conclusions?
+The question of the study was, if there are risk factors associated with CLNM. The results of the study have shown, that multifocality, HT and LVI were significantly associated with CLNM. So it was possible to identify several risk factors. In conclusion, there is evidence that there are risk factors, which are supported. However as the study was first of all only observational, secondly done with a small data set and last but not least the data only conducted in one center, one can not make a final statement.
 
 \bibliographystyle{abbrvnat}
 \bibliography{report}
