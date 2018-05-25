@@ -74,13 +74,13 @@ When the response variable is binary, so with values coded as 0 or 1, and the lo
 The authors themselves have implied that their study might lack statistical power by stating that their sample size was not large enough, suggesting that a large sample studies would be needed to confirm their predictive results. If we were to estimate the power of the analyses, we would need to know the sample size $n$ (given), the significance level (the study states that they consider $p < 0.05$ statistically significant), the effect size $d$, and the SD $\sigma$.
 
 \section{Possible Extension of Methodology}
-There are several ways to extend the methology:
+There are several ways to extend the methodology:
 \begin{itemize}
 \item bigger 'sample'-size
 \item several hospitals, ideally worldwide
 \item find confounding variables to eliminate them
 \end{itemize}
-The bigger 'sample'-size is inportant as otherwise it is difficult to make a statement with enough statistical power. Furthermore when the patients are treated in more than one hospital one can make sure, that there is less bias. If the hospitals are in different countries it should decrease the bias further, eventhough this can be difficult because of regulations. Last but not least it would be important to identify the confounding variables, so that they can be eliminated or their influence at least reduced in the setting.
+The bigger 'sample'-size is important as otherwise it is difficult to make a statement with enough statistical power. Furthermore when the patients are treated in more than one hospital one can make sure, that there is less bias. If the hospitals are in different countries it should decrease the bias further, even though this can be difficult because of regulations. Last but not least it would be important to identify the confounding variables, so that they can be eliminated or their influence at least reduced in the setting.
 \section{Discussion of Conclusions}
 % [?]  19. Does the study adequately address the question(s) it attempts to answer? (Can the question(s) possibly be answered by this study?)
 % [?]  20. In light of your answers to the above, does the evidence support the conclusions?
