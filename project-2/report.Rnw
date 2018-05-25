@@ -46,7 +46,7 @@ In addition to these features, the \texttt{age} and \texttt{gender} of the patie
 % [x]  6. (If controlled experiment) Is the experiment randomized? (Is the assignment to the treatment group or control group governed by a chance procedure, rather than by judgement or a haphazard procedure?)
 % [?]  7. What are the experimental units?
 % [?]  8. What is the experimental design?
-Since the study was observational and not a controlled experiment, there is no treatment, no control group and it is neither double blind nor randomized. For the same reason, there is no experimental unit, as there is no experiment. One can also not say, what the experimental unit would be, if there is an experiment, as it depends on the setup of the experiment. As the study is observational, there is no real experimental design. The data collection was done at the authors' hospital itself, as described in section~\ref{datacollection}.
+Since the study was observational and not a controlled experiment, there is no treatment, no control group and it is neither double blind nor randomized. For the same reason, there is no experimental unit, as there is no experiment. As the study is observational, there is no real experimental design. The data collection was done at the authors' hospital itself, as described in section~\ref{datacollection}.
 
 We cannot consider the variables available to be \textit{a priori} dependent or independent, as they are mere recordings of patient data. However, the study tries to establish whether there are independent predictor variables if \texttt{CLNM} is seen as the dependent variable, by employing univariate and multivariate logistic regression.
 
@@ -55,7 +55,7 @@ We cannot consider the variables available to be \textit{a priori} dependent or 
 The authors make no mention of possible confounding factors and how to control for them, but as pointed out by \citet{Norgaard2017}, ruling  out confounding is a constant challenge in studies of observational design, due to their non randomized nature.
 
 % [?]  13. What potential sources of bias are there?
-There are a number of potential sources of bias that can affect observational studies such as this one. First of all a selection bias could be present, as the whole data is from a single center. There could also be information bias in the form of measurement errors or misclassifications, which is hard to judge for us, because we have no way of verifying the correctness of the data.
+There are a number of potential sources of bias that can affect observational studies such as this one. First of all, a selection bias could be present, as the whole data is from a single center. There could also be information bias in the form of measurement errors or misclassifications, which is hard to judge for us, because we have no way of verifying the correctness of the data.
 
 % [?]  12. Are data values measured or self-reported?
 The clinical data was measured by the hospital, whereas some other data (\texttt{age}, \texttt{gender}) were reported by the patients.
@@ -64,21 +64,21 @@ The clinical data was measured by the hospital, whereas some other data (\texttt
 The study itself is exploratory, as in the study actually wanted to check if there might be a connection, but did not already start with a clear theory, which should now be proved. For that reason, a hypothesis is stated in the end, but not in the beginning. The objective was to explore risk factors associated with \texttt{CLNM} in \texttt{PTC} patients.
 
 % [?]  16. How are the data analyzed? Is the analysis appropriate for the design?
-In the paper the data are expressed as the mean $\pm$ standard deviation (SD). In a first step, the authors analyzed the difference between categorical variables with the help of a Chi-squared $(\chi^2)$ test. They then went on to conduct a binary logistic regression (uni- and multivariate), in order to investigate the relationship between the clinicopathologic features and \texttt{CLNM}, considering $p < 0.05$ as statistically significant. Considering that our dependent variable (\texttt{CLNM}) is categorical (the patients either are affected or they are not), so it seems appropriate to use binary logistic regression, where the response variable is binary, so with values coded as 0 or 1, and the logit-function is used for regression.
+In the paper the data are expressed as the mean $\pm$ standard deviation (SD). In a first step, the authors analyzed the difference between categorical variables with the help of a Chi-squared $(\chi^2)$ test. They then went on to conduct a binary logistic regression (uni- and multivariate), in order to investigate the relationship between the different clinicopathologic features and \texttt{CLNM}, considering $p < 0.05$ as statistically significant. Knowing that our dependent variable (\texttt{CLNM}) is categorical (the patients either are affected or they are not), so it seems appropriate to use binary logistic regression, where the response variable is binary, so with values coded as 0 or 1, and the logit-function is used for regression.
 
 % [?]  18. Is there adequate power? Is the sample size appropriate for the stated aims?
-The authors themselves have implied that their study might lack statistical power by stating that their sample size was not large enough, suggesting that a large sample studies would be needed to confirm their predictive results. If we were to estimate the power of the analyses, we would need to know the sample size $n$ (given), the significance level (the study states that they consider $p < 0.05$ statistically significant), the effect size $d$, and the SD $\sigma$. The statistical software \texttt{R}~\citep{R} provides a package \texttt{pwr}~\citep{pwr}, which contains a number of functions to calculate the power of common tests, such as the power of the Chi-squared test, based on the previously mentioned values.
+The authors themselves have implied that their study might lack statistical power by stating that their sample size was not large enough, suggesting that large sample studies would be needed to confirm their predictive results. If we were to estimate the power of the analyses, we would need to know the sample size $n$ (given), the significance level (the study states that they consider $p < 0.05$ statistically significant), the effect size $d$, and the SD $\sigma$. The statistical software \texttt{R}~\citep{R} provides a package \texttt{pwr}~\citep{pwr}, which contains a number of functions to calculate the power of common tests, such as the power of the Chi-squared test or the power of a general linear model, based on the previously mentioned values.
 
 \section{Possible Extension of Methodology}
 There are several ways to extend the methodology:
 
 \begin{itemize}
-\item bigger 'sample'-size
+\item larger sample size
 \item several hospitals, ideally worldwide
 \item find confounding variables to eliminate them
 \end{itemize}
 
-The bigger 'sample'-size is important as otherwise it is difficult to make a statement with enough statistical power. Furthermore when the patients are treated in more than one hospital one can make sure, that there is less bias. If the hospitals are in different countries it should decrease the bias further, even though this can be difficult because of regulations. Last but not least it would be important to identify the confounding variables, so that they can be eliminated or their influence at least reduced in the setting.
+The larger sample size is important as otherwise it is difficult to make a statement with enough statistical power. Furthermore, getting the data of the treated patients from more than one hospital could help to reduce a potential selection bias. If the hospitals are in different countries it should decrease the bias further, even though this might be difficult because of regulations. Last but not least it would be important to identify the confounding variables, so that they can be eliminated or their influence at least reduced in the setting. Possible candidates for confounding variables are \texttt{age} or \texttt{gender}, and one way to deal with the problem would be to use stratified sampling to make sure that the respective groups are equally represented, though the limited sample size might not permit this in this particular instance.
 
 \section{Discussion of Conclusions}
 % [?]  19. Does the study adequately address the question(s) it attempts to answer? (Can the question(s) possibly be answered by this study?)
