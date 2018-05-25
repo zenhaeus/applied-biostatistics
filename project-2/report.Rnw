@@ -46,7 +46,7 @@ In addition to these features, the age and gender of the patients were also take
 % [?]  8. What is the experimental design?
 Since the study was observational and not a controlled experiment, there is no treatment, no control group and it is neither double blind nor randomized. For the same reason, there is no experimental unit, as there is no experiment. One can also not say, what the experimental unit would be, if there is an experiment, as it depends on the setup of the experiment. As the study is observational, there is no real experimental design. The data collection was done at the authors' hospital itself, as described in section~\ref{datacollection}.
 
-The variables available are not \textit{a priori} dependent or independent, as they are mere recordings of patient data. However, the study tries to establish whether there are independent predictor variables if CLNM is seen as the dependent variable, by employing univariate and multivariate logistic regression.
+The variables available can not be considered \textit{a priori} dependent or independent, as they are mere recordings of patient data. However, the study tries to establish whether there are independent predictor variables if CLNM is seen as the dependent variable, by employing univariate and multivariate logistic regression.
 
 % [?]  9. What confounding factors may be involved?
 % [?]  10. Are any confounding factors controlled for?
@@ -56,22 +56,17 @@ The authors make no mention of possible confounding factors and how to control f
 There are a number of potential sources of bias that can affect observational studies such as this one. First of all a selection bias could be present, as the whole data is from a single center. There could also be information bias in the form of measurement errors or misclassifications, which is hard to judge for us because we have no way of verifying the correctness of the data.
 
 % [?]  12. Are data values measured or self-reported?
-The clinical data was measured by the hospital as some other data (age, ...) were reported by the patiences.
-
+The clinical data was measured by the hospital, whereas some other data (age, gender) were reported by the patients.
 % [?]  14. Is the study exploratory or confirmatory?
 % [?]  15. Are the statistical hypotheses articulated before the study is carried out, or are they suggested by the study?
 The study itself is exploratory, as in the study actually wanted to check if there might be a connection, but did not already start with a clear theory, which should now be proved. For that reason, a hypothesis is stated in the end, but not in the beginning. The objective was to explore risk factors associated with CLMN in PTC patients.
 
 % [?]  16. How are the data analyzed? Is the analysis appropriate for the design?
-% TODO: rephrase paragraph in own words or cite properly
-The data were analyzed by SPSS 16.0 statistical software. Data are expressed as the mean $\pm$ standard deviation (SD). Difference between categorical was analyzed by Chi-squared $(\chi^2)$ test. Univariate logistic and binary logistic regression were performed to investigate the relationship between clinicopathologic features and CLNM. A p value $< 0.05$ was considered statistically significant.
-
-% describe univariate and binary logistic regression
-When the response variable is binary, so with values coded as 0 or 1, and the logit-function is used for regression it is called binary logistic regression. Univariate means, that the model only has one variable.
+In the paper the data are expressed as the mean $\pm$ standard deviation (SD). In a first step, the authors analyzed the difference between categorical variables with the help of a Chi-squared $(\chi^2)$ test. They then went on to conduct a binary logistic regression (uni- and multivariate), in order to investigate the relationship between the clinicopathologic features and CLNM, considering $p < 0.05$ as statistically significant. Considering that our dependent variable (CLNM) is categorical (the patients either are affected or they are not), it seems appropriate to use binary logistic regression, where the response variable is binary, so with values coded as 0 or 1, and the logit-function is used for regression.
 % TODO is it the appropriate way to analyze?
 
 % [?]  18. Is there adequate power? Is the sample size appropriate for the stated aims?
-The authors themselves have implied that their study might lack statistical power by stating that their sample size was not large enough, suggesting that a large sample studies would be needed to confirm their predictive results. If we were to estimate the power of the analyses, we would need to know the sample size $n$ (given), the significance level (the study states that they consider $p < 0.05$ statistically significant), the effect size $d$, and the SD $\sigma$.
+The authors themselves have implied that their study might lack statistical power by stating that their sample size was not large enough, suggesting that a large sample studies would be needed to confirm their predictive results. If we were to estimate the power of the analyses, we would need to know the sample size $n$ (given), the significance level (the study states that they consider $p < 0.05$ statistically significant), the effect size $d$, and the SD $\sigma$. The statistical software \texttt{R}~\citep{R} provides a package \texttt{pwr}~\citep{pwr}, which contains a number of functions to calculate the power of common tests, such as the power of the Chi-squared test.
 
 \section{Possible Extension of Methodology}
 There are several ways to extend the methodology:
@@ -81,10 +76,11 @@ There are several ways to extend the methodology:
 \item find confounding variables to eliminate them
 \end{itemize}
 The bigger 'sample'-size is important as otherwise it is difficult to make a statement with enough statistical power. Furthermore when the patients are treated in more than one hospital one can make sure, that there is less bias. If the hospitals are in different countries it should decrease the bias further, even though this can be difficult because of regulations. Last but not least it would be important to identify the confounding variables, so that they can be eliminated or their influence at least reduced in the setting.
+
 \section{Discussion of Conclusions}
 % [?]  19. Does the study adequately address the question(s) it attempts to answer? (Can the question(s) possibly be answered by this study?)
 % [?]  20. In light of your answers to the above, does the evidence support the conclusions?
-The question of the study was, if there are risk factors associated with CLNM. The results of the study have shown, that multifocality, HT and LVI were significantly associated with CLNM. So it was possible to identify several risk factors. In conclusion, there is evidence that there are risk factors, which are supported. However as the study was first of all only observational, secondly done with a small data set and last but not least the data only conducted in one center, one can not make a final statement.
+The question of the study was, if there are risk factors associated with CLNM. The results of the study have shown, that multifocality, HT and LVI were significantly associated with CLNM. So it was possible to identify several risk factors. In conclusion, there is evidence that there are risk factors, which are supported. However as the study was first of all only observational, secondly done with a small data set and last but not least the data only conducted in one center, the results are not particularly conclusive.
 
 \bibliographystyle{abbrvnat}
 \bibliography{report}
