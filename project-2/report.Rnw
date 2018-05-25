@@ -33,11 +33,11 @@
 % [?]  13. What potential sources of bias are there?
 % [?]  14. Is the study exploratory or confirmatory?
 % [?]  15. Are the statistical hypotheses articulated before the study is carried out, or are they suggested by the study?
-% [ ]  16. How are the data analyzed? Is the analysis appropriate for the design?
+% [?]  16. How are the data analyzed? Is the analysis appropriate for the design?
 % [?]  17. Is the study exploratory or confirmatory?
-% [ ]  18. Is there adequate power? Is the sample size appropriate for the stated aims?
-% [ ]  19. Does the study adequately address the question(s) it attempts to answer? (Can the question(s) possibly be answered by this study?)
-% [ ]  20. In light of your answers to the above, does the evidence support the conclusions?  
+% [?]  18. Is there adequate power? Is the sample size appropriate for the stated aims?
+% [?]  19. Does the study adequately address the question(s) it attempts to answer? (Can the question(s) possibly be answered by this study?)
+% [?]  20. In light of your answers to the above, does the evidence support the conclusions?  
 
 \section{Introduction}
 This assignment is an evaluation of \citet{TANG2018129}, an observational study whose objective was to ``explore the risk factors that were associated with central lymph node metastases (CLNM) in papillary thyroid carcinoma (PTC) patients". In this report we will address the biomedical background of the paper, describe the data which the study is based on, comment on the types of analyses that were carried out, as well as recommend further analyses that could have been done. Finally, we will discuss the conclusions that were drawn by the authors of the study.
@@ -57,16 +57,26 @@ The study was done on 202 retrospectively selected patients who had undergone th
 
 In addition to these features the age and gender of the patients were also taken into account.
 
+% TODO type of data
+
 \section{Methods}
 Since the study was observational and not a controlled experiment, there is no `treatment', no control group and it is neither double blind nor randomized.\par
 There is not a experimental unit, as there is no experiment. One can also not say, what the experimental unit would be, if there is an experiment, as it depends on the setup of the experiment. As the study is observational, there is no real experimental design. The data collection was done at the authors' hospital itself, like described in section~\ref{datacollection}. As it is a observational study the effect of confounding variables was not tackled. However one can make inferences about the relationship between independent variables and dependent variables.\par
-Confounding variables were not explicitly stated by the authors, ... %age could be one, but unsure
+Confounding variables were not explicitly stated by the authors, ... 
+% TODO age could be one, but unsure
 As the study was observational there was no intended control of any variable or factor, so the possible confounding factors were not controlled either.\par
 There can be a selection bias as the whole data is from a single center.\par
 The clinical data was measured by the hospital as some other data (age, ...) were reported by the patiences.\par
-The study itself is exploratory as in the study actually wanted to check if there might be a connection but did not already start with a quite clear theory, which should now be proved. For that reason a hypothesis is stated in the end however not already in the beginning. The objective was to explore risk factors associated with CLMN in PTC patients.
+The study itself is exploratory as in the study actually wanted to check if there might be a connection but did not already start with a quite clear theory, which should now be proved. For that reason a hypothesis is stated in the end however not already in the beginning. The objective was to explore risk factors associated with CLMN in PTC patients.\par
+The data were analyzed by SPSS 16.0 statistical software. Data are expressed as the mean ± standard deviation (SD). Difference between categorical was analyzed by Chi-squared $(\chi^2)$ test. Univariate logistic and binary logistic regression were performed to investigate the relationship between clinicopathologic features and CLNM. A p value < 0.05 was considered statistically significant.\par
 % describe univariate and binary logistic regression
-
+When the response variable is binary, so with values coded as 0 or 1, and the logit-function is used for regression it is called binary logistic regression. Univariante means, that the model only has one variable.
+% TODO is it the appropriate way to analyze?
+\par
+The study itself has for the observational study not that many data samples, however as it is only onservational not experimental, they could not influence the number of samples.
+% TODO adequate power?
+\par
+The question of the study was, if there are risk factors associated with CLNM. The results of the study showed, that multifocality, HT and LVI were significant associated with CLNM. So it was possible to identify several risk factors. So in conclusion there is evidence, that there are risk factors, which are supported. However as the study was first of all only observational, secondly done with a small data set and last but not least the data only conducted in one center, one can not make a final statement.
 \section{Possible Extension of Methodology}
 
 \section{Discussion of Conclusions}
