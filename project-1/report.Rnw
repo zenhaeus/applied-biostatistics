@@ -1,11 +1,10 @@
-\documentclass[a4paper]{article}
+\documentclass[12,a4paper]{article}
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{float}
 
-\title{Applied Biostatistics - Assignment 1\\
-\large{Problem 2: PlantGrowth Analysis}}
+\title{Analysis of variance on the treatment groups of the PlantGrowth dataset}
 
 \author{Lukas Widmer \\ Joey Zenh\"ausern}
 
@@ -14,23 +13,16 @@
 \maketitle
 
 \section{Introduction}
-In this report we will carry out a exploratory analysis on the \texttt{PlantGrowth} dataset, which is included in the \texttt{datasets} package of the base \texttt{R}~\cite{R} installation. The dataset contains the results from an experiment, in which plant yields (measured by dried weight) were compared under a control and two different treatment conditions. The data consists of 30 observations of two variables (\texttt{weight}, \texttt{group}), more precisely there are 10 weight observations per individual group.
+In this report we carry out a exploratory analysis on the \texttt{PlantGrowth} dataset included in the \texttt{datasets} package of the base \texttt{R}~\cite{R} installation. We determine whether or not there are significant differences between the means of the three groups of the dataset by carrying out an analysis of variance. If there are differences, we describe which group means differ significantly.
 
-Furthermore, we will determine whether or not there are significant differences between the means of the three groups by carrying out an analysis of variance. If there are differences, we will describe which groups are different from each other.
-
-In addition to the base installation of \texttt{R} we have used the following packages to generate this report: 
-\begin{itemize}
-    \item \texttt{knitr}~\cite{knitr}: To embed \texttt{R} code within a LaTeX document.
-    \item \texttt{xtable}~\cite{xtable}: To generate LaTeX tables within \texttt{R}.
-    \item \texttt{broom}~\cite{broom}: For easy handling and conversion of lists to tables.
-\end{itemize}
+The dataset contains the results from an experiment, in which plant yields (measured by dried weight) were compared under a control and two different treatment conditions. The data consist of 30 observations of two variables (\texttt{weight}, \texttt{group}); more precisely there are 10 weight observations per individual group.
 
 \section{Exploratory Analysis}
-In the boxplot, which is combined with a scatterplot, shown in Figure~\ref{fig:boxplot}, one can see that there might be a difference between the two treatments. However as the data from \texttt{Treat. 1} is scattered, it is difficult to conclude anything, especially as there are only few observations. Furthermore it is not possible to determine whether either or even both treatments are significantly different to the control group.
+We first carry out an explorantory analysis. In the boxplot, which is combined with a scatterplot, shown in Figure~\ref{fig:boxplot}, we see that there might be a difference between the two treatments. However, as the data from \texttt{Treat. 1} is scattered, it is difficult to conclude anything, especially as there are only few observations. Furthermore, it is not possible to determine whether either or even both treatments are significantly different to the control group.
 
-One can see in Table~\ref{tab:means} and Table~\ref{tab:variances}, that there are differences in mean and variance between the three groups.
+We see in Table~\ref{tab:means}, that there are differences in mean and variance between the three groups.
 
-<<boxplot, fig.lp='fig:', fig.cap='Boxplot of the PlantGrowth dataset', fig.height=4, warning=FALSE, echo=FALSE>>=
+<<boxplot, fig.lp='fig:', fig.cap='Boxplots of dried plantweight for plants in each treatment group', fig.height=4, warning=FALSE, echo=FALSE>>=
 
 library(stats)
 library(xtable)
@@ -63,27 +55,24 @@ plant.mean <- tidy(with(plant.data, tapply(weight, group, mean)))
 plant.var <- tidy(with(plant.data, tapply(weight, group, var)))
 colnames(plant.mean) <- c("group", "mean")
 colnames(plant.var) <- c("group", "variance")
+tmp<-merge(plant.mean,plant.var,by='group')
 print(
-      xtable(plant.mean, caption = "Mean by group", label = "tab:means"),
-      table.placement = "H"
-)
-print(
-      xtable(plant.var, caption = "Variance by group", label = "tab:variances"),
+      xtable(tmp, caption = "Mean and variance by treatment group", label = "tab:means"),
       table.placement = "H"
 )
 @
 
-Our hypotheses are the following:
+The hypotheses are the following:
 \begin{align*}
     \mathcal{H}_0 &: \mu_{c} = \mu_{t_1} = \mu_{t_2}\\
     \mathcal{H}_a &: \text{at least one $\mu_i, i \in \{c, t_1, t_2\}$ is different}
 \end{align*}
-Our null Hypothesis is, that there is no significant difference between the mean of the three groups. Our alternative Hypothesis is that for each group the mean may differ, so that at least one differs significantly from the others.
+The null Hypothesis is that there is no difference between the mean of the three groups. The alternative Hypothesis is that at least a pair of means differ.
 
-\section{Data Modeling}
-As a first step in our analysis we use the \texttt{lm} function to model the data. The model parameters estimated by the model (see Table~\ref{tab:plantlm}) correspond to the mean of the \texttt{Control} (\texttt{intercept}), the difference in mean between \texttt{Control} and \texttt{Treat.~1} (\texttt{groupTreat.~1}), as well as the difference in mean between \texttt{Control} and \texttt{Treat.~2} (\texttt{groupTreat.~2}). From this it is easy to see, that in absolute terms the difference in mean is largest between \texttt{Control} and \texttt{Treat.~2}, though the model coefficient appears to be significant only at the 0.10 level. 
+\section{Analysis of Variance}
+As a first step in our analysis we use the \texttt{lm} function to model the data. The summary of the model we see in Table~\ref{tab:plantlm}. From this model it is easy to see, that in absolute terms the difference in mean is largest between \texttt{Control} and \texttt{Treat.~2}, though the model coefficient appears to be significant only at the 0.10 level. 
 
-We use the \texttt{confint} function to calculate confidence intervals for the groups, the result is listed in Table~\ref{tab:confint}. However as the confidence intervals are overlapping, one can not conclude a significant difference from it. Furthermore it should be noted, that the confidence intervals for the model coefficients \texttt{groupTreat.~1} and \texttt{groupTreat.~2} both contain zero, so we cannot reject the null hypothesis based on the linear model.
+We use the \texttt{confint} function to calculate confidence intervals for the groups, the result is listed in Table~\ref{tab:confint}. However as the confidence intervals are overlapping, we can not conclude a significant difference from it. Furthermore it should be noted, that the confidence intervals for the model coefficients \texttt{groupTreat.~1} and \texttt{groupTreat.~2} both contain zero, so we cannot reject the null hypothesis based on the linear model.
 <<lm_summary_table, fig.height=4, warning=FALSE, echo=FALSE, results="asis">>=
 plant.fit = lm(weight ~ group, data = plant.data)
 print(xtable(summary(plant.fit), caption = "Summary of linear model fitted to PlantGrowth data", label="tab:plantlm"))
@@ -97,25 +86,23 @@ print(
 #plot(aov(weight ~ group, data = plant.data))
 @
 
-\section{Analysis of Variance}
-For further analysis we use \texttt{anova} on the fitted model. The result of the \texttt{anova} confirms, that there is a difference between the groups, and thus we can reject our null hypothesis $\mathcal{H}_0$ at the 0.05 level.
+We test for difference in groups by carrying out an analysis of variance (\texttt{anova}) on the fitted model. The results are summarized in Table~\ref{tab:anova}. The p-value is below the 0.05 significance level, which means we can reject the null hypothesis $\mathcal{H}_0$.
 
 <<anova, fig.height=4, warning=FALSE, echo=FALSE, results="asis">>=
 print(
-    xtable(anova(plant.fit), caption = "Results of ANOVA", label = "tab:anova"),
+    xtable(anova(plant.fit), caption = "ANOVA table for the plant growth data", label = "tab:anova"),
     table.placement = "H"
 )
 @
-
-Finally, a post-hoc analysis based on Tukey's range test using the \texttt{TukeyHSD} function, indicates that there is a significant difference between the means of the two treatments on the 95\% level.
+To find out, which two groups differ, we use a post-hoc analysis based on Tukey's range test using the \texttt{TukeyHSD} function. The test indicates that there is a significant difference between the means of the two treatments on the 95\% level.
 
 <<tukeyhsd_table, fig.height=4, warning=FALSE, echo=FALSE, results="asis">>=
-print(xtable(tidy(TukeyHSD(aov(plant.fit))), caption = "Results of TukeyHSD", label = "tab:tukey"))
+print(xtable(tidy(TukeyHSD(aov(plant.fit))), caption = "TukeyHSD table for the plant growth data", label = "tab:tukey"))
 @
 \section{Conclusions}
-The goal of this analysis is to find out whether there is a significant difference between the means of the three groups in the dataset "PlantGrowth".
-The boxplot in Figure~\ref{fig:boxplot} shows that there is some difference between the two treatment groups, which can also be seen in Table~\ref{tab:means} for means and in Table~\ref{tab:variances} for variance. However there are only few data points and the data points from treatment 1 are quite scattered, both of which leads to a fair degree of uncertainty.
+In order to asses for differences in mean dried plant weight, we carried out an ANOVA. In the boxplot in Figure~\ref{fig:boxplot}, we see, there is some difference between the two treatment groups. However, there are only few data points and the data points from treatment 1 are quite scattered, both of which leads to a fair degree of uncertainty.
 Fitting a linear model to the data does not reveal any new information that would lead to the rejection of the null hypothesis. The \texttt{anova} with a significance level of 0.05 and the \texttt{TukeyHSD} with a 95\%-confidence-level then show, that there is a significant difference between the two treatments.
+However, there are only few datapoints and the difference is very small, so that some more datapoints could lead to a different picture.
 \bibliographystyle{unsrt}
 \bibliography{report}
 
